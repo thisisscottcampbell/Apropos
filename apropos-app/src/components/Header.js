@@ -1,14 +1,11 @@
 import React from 'react';
 
-const Header = ({ user, setUser }) => {
-	const handleClick = () => setUser('');
-
+function Header({ user, setUser }) {
 	return (
 		<div>
-			<p>Welcome, {user}!</p>
-			<button onClick={handleClick}>Log Out</button>
+			Welcome, {user}!<button onClick={() => setUser('')}>Logout</button>
 		</div>
 	);
-};
+}
 
 export default Header;
