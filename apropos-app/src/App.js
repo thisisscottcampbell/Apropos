@@ -1,25 +1,31 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import Login from './components/Login';
 import Header from './components/Header';
 import CreatePost from './components/CreatePost';
 import PostList from './components/PostList';
 
 export const UserContext = React.createContext();
+//UserContext.Provider
+//UserContext.Consumer
 
 function App() {
-	const [user, setUser] = useState('');
-	const [posts, setPosts] = useState([]);
+	const [user, setUser] = React.useState('Ric Flair');
+	const [posts, setPosts] = React.useState([]);
 
-	useEffect(() => {
-		document.title = user ? `${user}'s Appropos` : `Please Login`;
+	React.useEffect(() => {
+		document.title = user ? `${user}'s Feed` : 'Please login';
 	}, [user]);
 
-	const handleAddPost = useCallback(
-		(newPost) => setPosts([newPost, ...posts]),
+	const handleAddPost = React.useCallback(
+		(newPost) => {
+			setPosts([newPost, ...posts]);
+		},
 		[posts]
 	);
 
-	if (!user) return <Login setUser={setUser} />;
+	if (!user) {
+		return <Login setUser={setUser} />;
+	}
 
 	return (
 		<UserContext.Provider value={user}>
