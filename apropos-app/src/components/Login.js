@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Login = ({ setUser }) => {
-	const [input, setInput] = useState('');
+function Login({ setUser }) {
+	const [username, setUsername] = React.useState('');
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		setUser(input);
-	};
+	function handleSubmit(event) {
+		event.preventDefault();
+		setUser(username);
+	}
 
 	return (
 		<div>
 			<h2>Login</h2>
 			<form onSubmit={handleSubmit}>
 				<input
-					onChange={(e) => setInput(e.target.value)}
+					onChange={(event) => setUsername(event.target.value)}
 					placeholder="Input username"
 				/>
 				<button type="submit">Submit</button>
 			</form>
 		</div>
 	);
-};
+}
 
 export default Login;
